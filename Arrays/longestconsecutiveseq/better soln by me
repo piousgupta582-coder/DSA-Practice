@@ -1,0 +1,24 @@
+// Better soln logic by me
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+       int n = nums.size();
+       if(n==0) return 0; //if array is empty
+        sort(nums.begin(),nums.end());
+        //calculate length of current sequence
+        int cnt =1;
+        //agr array mai khali ek hi element hai toh maxi should be 1 becoz akela elemnt is consecutive
+        int maxi = 1;//stores length of longest Consecutive trail
+        for(int i = 1;i<n;i++){
+            if(nums[i]-nums[i-1] == 1){//calculating count of consecutive elmemnts
+                cnt++;
+            }
+            else if(nums[i]== nums[i-1]) continue;//skiping duplicates
+            else{
+                cnt = 1;//if trail of consecutive elemnts break agin set to 1
+            }
+            maxi = max(cnt,maxi);
+        }
+        return maxi;   
+    }
+};
