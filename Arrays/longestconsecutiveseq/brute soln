@@ -1,0 +1,21 @@
+// Brute force soln
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        int longest = 1;// agr ek bhi element array mai hua toh wohi consecutive an lenght will be one,also it will store the maxm count of consecutive trail
+        int n = nums.size();
+        for(int i = 0;i<n;i++){
+            int a = nums[i];// current element store kiya
+            int cnt = 1;//it will store the cnt of consecutive element of current element aur cnt = 1 isliye kyuki wo bhi consecutive trail ka hissa hoga 
+            for(int j = 0;j<n;j++){
+                if(nums[j] == a+1){// if current elememnt ka consecutive mila toh
+                    cnt = cnt+1;//inc the counter
+                    a++;//find next consecutive element of the consecutive element finded by a+1
+                    j=-1;// again scan the whole array for the consecutive elememnt
+                }
+            }
+            longest = max(cnt,longest);
+        }
+        return longest;
+    }
+};
